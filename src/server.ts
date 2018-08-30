@@ -1,29 +1,16 @@
 import { ApolloServer } from "apollo-server";
 import { mergeSchemas } from "graphql-tools";
 import { GraphQLSchema } from "graphql";
-import {
-	gql,
-	makeExecutableSchema
-} from "apollo-server";
+import mongoose from "mongoose";
+import { schemas } from './schemas';
+import { resolvers } from './resolvers';
 
+const MONGO_URL = 'localhost';
+const MONGO_PORT = 27017;
+const DB_NAME = 'postExample';
+mongoose.set("debug", true);
 
-const helloSchema: GraphQLSchema = makeExecutableSchema({
-	typeDefs: gql`
-		type Query {
-			hello: String
-		}
-	`
-});
-const helloResolver = {
-	Query: {
-		hello: () => {
-			return "Hello world!";
-		}
-	}
-};
-
-const schemas = [helloSchema];
-const resolvers = [helloResolver];
+mongoose.connect(`mongodb://${MONGO_URL}:${MONGO_PORT}/${DB_NAME}`);
 
 const schema: GraphQLSchema = mergeSchemas({
 	schemas,
