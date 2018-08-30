@@ -1,9 +1,9 @@
-import { addMockFunctionsToSchema, makeExecutableSchema } from "apollo-server";
+import { makeExecutableSchema } from "apollo-server";
 import { GraphQLSchema } from "graphql";
-import { postType, postQuery, postMutation } from "./schema";
+import { postType, postQuery, postMutation, postSubscription } from "./schema";
 
 const postSchema: GraphQLSchema = makeExecutableSchema({
-	typeDefs: [postType, postQuery, postMutation]
+	typeDefs: [postType, postQuery, postMutation, postSubscription]
 });
 
 export { postSchema };

@@ -1,4 +1,4 @@
-import { ApolloServer } from "apollo-server";
+import { ApolloServer, PubSub } from "apollo-server";
 import { mergeSchemas } from "graphql-tools";
 import { GraphQLSchema } from "graphql";
 import mongoose from "mongoose";
@@ -11,7 +11,7 @@ const DB_NAME = 'postExample';
 mongoose.set("debug", true);
 
 mongoose.connect(`mongodb://${MONGO_URL}:${MONGO_PORT}/${DB_NAME}`);
-
+export const pubsub = new PubSub();
 const schema: GraphQLSchema = mergeSchemas({
 	schemas,
 	resolvers
