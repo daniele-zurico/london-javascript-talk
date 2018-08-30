@@ -1,0 +1,33 @@
+{
+  "name": "london-javascript-talk",
+  "version": "1.0.0",
+  "description": "talk about apollo-server",
+  "main": "src/server.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "ts-node": "^6.0.5",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.1"
+  },
+  "scripts": {
+    "start": "nodemon ./src/server.ts",
+    "build": "tsc",
+    "prod": "npm run build  && npm run start-prod",
+    "start-prod": "nodemon ./dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniele-zurico/london-javascript-talk.git"
+  },
+  "keywords": [
+    "graphql",
+    "apollo-server"
+  ],
+  "author": "Daniele Zurico <daniele.zurico@gmail.com> (http://www.dzurico.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniele-zurico/london-javascript-talk/issues"
+  },
+  "homepage": "https://github.com/daniele-zurico/london-javascript-talk#readme"
+}
