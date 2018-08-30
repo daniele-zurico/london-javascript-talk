@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "talk about apollo-server",
   "main": "src/server.ts",
-  "dependencies": {},
+  "dependencies": {
+    "apollo-server": "2.0.5",
+    "graphql": "0.13.2",
+    "graphql-tools": "3.1.1"
+  },
   "devDependencies": {
+    "@types/graphql": "^0.13.1",
     "nodemon": "^1.17.5",
     "ts-node": "^6.0.5",
     "tslint": "^5.10.0",
