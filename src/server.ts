@@ -4,6 +4,7 @@ import { GraphQLSchema } from "graphql";
 import mongoose from "mongoose";
 import { schemas } from './schemas';
 import { resolvers } from './resolvers';
+import {LaunchAPI} from './launch/datasource/launch';
 
 const MONGO_URL = 'localhost';
 const MONGO_PORT = 27017;
@@ -17,7 +18,12 @@ const schema: GraphQLSchema = mergeSchemas({
 	resolvers
 });
 
-const server = new ApolloServer({schema});
+const server = new ApolloServer({
+	schema, 
+	dataSources: () => ({
+		launchAPI: new LaunchAPI(),
+	})
+});
 
 server.listen().then(({ url }) => {
 	console.log(`🚀 Server ready at ${url}`);

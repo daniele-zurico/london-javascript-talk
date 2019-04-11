@@ -4,6 +4,7 @@
   "description": "talk about apollo-server",
   "main": "src/server.ts",
   "dependencies": {
+    "apollo-datasource-rest": "^0.3.2",
     "apollo-server": "2.0.5",
     "graphql": "0.13.2",
     "graphql-tools": "3.1.1",
