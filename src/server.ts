@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import { schemas } from './schemas';
 import { resolvers } from './resolvers';
 import {LaunchAPI} from './launch/datasource/launch';
+import { userController } from "./user";
 
 const MONGO_URL = 'localhost';
 const MONGO_PORT = 27017;
@@ -19,9 +20,15 @@ const schema: GraphQLSchema = mergeSchemas({
 });
 
 const server = new ApolloServer({
+	context: async ({ req }: any) => {
+		// simple auth check on every request
+		const auth = (req && req.headers && req.headers.authorization) || '';
+		const authorized = await userController.findUser(auth);
+		return {isAuthorized: authorized};
+	},
 	schema, 
 	dataSources: () => ({
-		launchAPI: new LaunchAPI(),
+		launchAPI: new LaunchAPI()
 	})
 });
 

@@ -2,11 +2,11 @@ import { gql } from "apollo-server";
 
 const launchesType = gql`
 	type Launch {
-    id: ID!
-    site: String
-    mission: Mission
-    rocket: Rocket
-    isBooked: Boolean!
+        id: ID!
+        site: String
+        mission: Mission
+        rocket: Rocket
+        isBooked: Boolean!
     }
     type Mission {
         name: String
